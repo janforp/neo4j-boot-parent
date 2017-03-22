@@ -1,5 +1,6 @@
 package com.janita.neo4j.one.controller;
 
+import com.janita.neo4j.one.domain.ContainRelationship;
 import com.janita.neo4j.one.domain.Knowledge;
 import com.janita.neo4j.one.service.KnowledgeService;
 import io.swagger.annotations.Api;

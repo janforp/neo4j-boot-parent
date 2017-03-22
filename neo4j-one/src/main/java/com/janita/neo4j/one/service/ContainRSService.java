@@ -7,6 +7,9 @@ import com.janita.neo4j.one.repository.KnowledgeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Janita on 2017-03-22 15:10
  */
@@ -29,5 +32,27 @@ public class ContainRSService {
         relationship.setDescription(desc);
 
         return containRSRepository.save(relationship);
+    }
+
+    /**
+     * 根据关系id取消该关系
+     * @param rsId
+     * @return
+     */
+    public ContainRelationship removeRS(Long rsId) {
+        containRSRepository.delete(rsId);
+        return containRSRepository.findOne(rsId);
+    }
+
+    /**
+     * 列出所有关系
+     * @return
+     */
+    public List<ContainRelationship> list() {
+        List<ContainRelationship> containRelationships = new ArrayList<>();
+        for (ContainRelationship relationship : containRSRepository.findAll()){
+            containRelationships.add(relationship);
+        }
+        return containRelationships;
     }
 }
