@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-public class LessonSwaggerConfiguration {
+public class SwaggerConfiguration {
 
 	private static final String APIPACKAGE= "com.janita.neo4j.one.controller";
 	
