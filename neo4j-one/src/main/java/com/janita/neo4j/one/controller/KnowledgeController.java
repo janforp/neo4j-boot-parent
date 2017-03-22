@@ -27,7 +27,6 @@ public class KnowledgeController {
     @GetMapping
     @ApiOperation(value = "根据id获取知识点")
     public Knowledge getKnowledge(Long id){
-
         return knowledgeService.findKnowledgeById(id);
     }
 }
