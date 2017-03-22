@@ -5,7 +5,10 @@ import com.janita.neo4j.one.repository.KnowledgeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by Janita on 2017-03-22 11:31
@@ -34,5 +37,17 @@ public class KnowledgeService {
      */
     public Knowledge findKnowledgeById(Long id) {
         return knowledgeRepository.findOne(id);
+    }
+
+    /**
+     * 查询知识点列表
+     * @return
+     */
+    public List<Knowledge> findAll() {
+        List<Knowledge> knowledgeList = new ArrayList<>();
+        for (Knowledge knowledge : knowledgeRepository.findAll()){
+           knowledgeList.add(knowledge);
+        }
+        return knowledgeList;
     }
 }

@@ -22,6 +22,8 @@ public class ContainRelationship implements Serializable {
     @EndNode
     Knowledge end;
 
+    private String description;
+
     public Long getId() {
         return id;
     }
@@ -44,5 +46,13 @@ public class ContainRelationship implements Serializable {
 
     public void setEnd(Knowledge end) {
         this.end = end;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

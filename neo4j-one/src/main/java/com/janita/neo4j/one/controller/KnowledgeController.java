@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by Janita on 2017-03-22 11:31
  */
@@ -28,5 +30,11 @@ public class KnowledgeController {
     @ApiOperation(value = "根据id获取知识点")
     public Knowledge getKnowledge(Long id){
         return knowledgeService.findKnowledgeById(id);
+    }
+
+    @GetMapping("/list")
+    @ApiOperation(value = "获取所有知识点列表")
+    public List<Knowledge> findAll(){
+        return knowledgeService.findAll();
     }
 }

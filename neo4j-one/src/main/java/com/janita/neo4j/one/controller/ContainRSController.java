@@ -22,7 +22,7 @@ public class ContainRSController {
 
     @PostMapping
     @ApiOperation(value = "在两个知识点直接建立包含关系")
-    public ContainRelationship createRS(Long start,Long end){
-        return containRSService.createRS(start,end);
+    public ContainRelationship createRS(Long start,Long end,String desc){
+        return containRSService.createRS(start,end,desc);
     }
 }

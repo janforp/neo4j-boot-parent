@@ -18,7 +18,7 @@ public class ContainRSService {
     @Autowired
     private KnowledgeRepository knowledgeRepository;
 
-    public ContainRelationship createRS(Long start,Long end){
+    public ContainRelationship createRS(Long start,Long end,String desc){
 
         Knowledge startK = knowledgeRepository.findOne(start);
         Knowledge endK = knowledgeRepository.findOne(end);
@@ -26,6 +26,7 @@ public class ContainRSService {
         ContainRelationship relationship = new ContainRelationship();
         relationship.setStart(startK);
         relationship.setEnd(endK);
+        relationship.setDescription(desc);
 
         return containRSRepository.save(relationship);
     }
