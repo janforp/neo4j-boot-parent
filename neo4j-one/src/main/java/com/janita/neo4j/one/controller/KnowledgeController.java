@@ -2,6 +2,7 @@ package com.janita.neo4j.one.controller;
 
 import com.janita.neo4j.one.domain.ContainRelationship;
 import com.janita.neo4j.one.domain.Knowledge;
+import com.janita.neo4j.one.service.ContainRSService;
 import com.janita.neo4j.one.service.KnowledgeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +21,8 @@ public class KnowledgeController {
 
     @Autowired
     private KnowledgeService knowledgeService;
+    @Autowired
+    private ContainRSService containRSService;
 
     @PostMapping
     @ApiOperation(value = "添加知识点",notes = "添加知识点")
@@ -37,5 +40,15 @@ public class KnowledgeController {
     @ApiOperation(value = "获取所有知识点列表")
     public List<Knowledge> findAll(){
         return knowledgeService.findAll();
+    }
+
+    @GetMapping("/{parentId}")
+    public List<Knowledge> getAllChildKnowledge(@PathVariable Long parentId){
+
+        Knowledge knowledge = knowledgeService.findKnowledgeById(parentId);
+        if (knowledge == null){
+            throw new RuntimeException("父节点不能空");
+        }
+        return containRSService.findChildById(parentId);
     }
 }

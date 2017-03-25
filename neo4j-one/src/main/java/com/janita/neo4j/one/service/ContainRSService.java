@@ -55,4 +55,14 @@ public class ContainRSService {
         }
         return containRelationships;
     }
+
+    /**
+     * 查询某个知识点下所有包含的知识点
+     * @param parentId
+     * @return
+     */
+    public List<Knowledge> findChildById(Long parentId) {
+        //自己写match()语句
+        return null;
+    }
 }

@@ -6,6 +6,9 @@ import com.janita.neo4j.one.repository.NextSubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Janita on 2017-03-25 09:29
  */
@@ -28,5 +31,13 @@ public class NextSubjectRSService {
         relationship.setNow(nowSubject);
 
         return nextSubjectRepository.save(relationship);
+    }
+
+    public List<NextSubjectRelationship> list() {
+        List<NextSubjectRelationship> relationships = new ArrayList<>();
+        for (NextSubjectRelationship relationship : nextSubjectRepository.findAll()){
+            relationships.add(relationship);
+        }
+        return relationships;
     }
 }

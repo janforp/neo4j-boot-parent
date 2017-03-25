@@ -7,9 +7,12 @@ import com.janita.neo4j.one.service.SubjectService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by Janita on 2017-03-25 09:29
@@ -35,6 +38,12 @@ public class NextSubjectRSController {
             throw new RuntimeException("科目不能空");
         }
         return nextSubjectRSService.createNextSubjectRS(nowSubject,nextSubject);
+    }
+
+    @GetMapping
+    @ApiOperation(value = "列出所有的next关系")
+    public List<NextSubjectRelationship> list(){
+        return nextSubjectRSService.list();
     }
 
 }
